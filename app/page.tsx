@@ -235,7 +235,7 @@ export default function Home() {
 							rules={[{ required: true }]}
 							initialValue={0}
 						>
-							<InputNumber min={0} max={100} />
+							<InputNumber min={0} max={2} />
 						</Form.Item>
 
 						<Form.Item wrapperCol={{ offset: 8, span: 16 }}>
