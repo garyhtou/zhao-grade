@@ -5,7 +5,10 @@ import { Button, Form, InputNumber } from 'antd';
 import { ConfigProvider, theme } from 'antd';
 
 export default function Home() {
+	const A_GRADE = 93;
+
 	const [grade, setGrade] = useState<number | null>(null);
+	const [neededFinalGrade, setNeededFinalGrade] = useState<number | null>(null);
 
 	const onFinish = (values: any) => {
 		console.log('Success:', values);
@@ -38,8 +41,13 @@ export default function Home() {
 		const midterm = me * 0.2;
 		const final = (fe + extra) * 0.35;
 		const total = inClass + hw + project + midterm + final;
-		console.log({ inClass, hw, project, midterm, final, total });
+
+		const neededFinal =
+			(A_GRADE - (inClass + hw + project + midterm)) / 0.35 - extra;
+		console.log({ inClass, hw, project, midterm, final, total, neededFinal });
+
 		setGrade(total);
+		setNeededFinalGrade(neededFinal);
 	};
 
 	const onFinishFailed = (errorInfo: any) => {
@@ -249,6 +257,20 @@ export default function Home() {
 					{grade ? (
 						<p className='text-2xl font-bold text-center'>
 							Your Refactoring grade is: {Math.round(grade * 100) / 100}%
+						</p>
+					) : null}
+
+					{neededFinalGrade ? (
+						<p className='font-bold text-center'>
+							You&apos;ll need at least a{' '}
+							{Math.round(neededFinalGrade * 100) / 100}% on the final exam to
+							get an A overall.
+							{neededFinalGrade > 95 ? (
+								<>
+									<br />
+									<span>Good luck?? 😭</span>
+								</>
+							) : null}
 						</p>
 					) : null}
 				</div>
