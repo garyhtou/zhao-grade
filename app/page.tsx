@@ -39,8 +39,8 @@ export default function Home() {
 		const hw = (hw1 + hw2 + hw3) * 0.05;
 		const project = (p2mt + pm + pmc) * 0.05;
 		const midterm = me * 0.2;
-		const final = (fe + extra) * 0.35;
-		const total = inClass + hw + project + midterm + final;
+		const final = fe * 0.35;
+		const total = inClass + hw + project + midterm + final + extra;
 
 		const neededFinal =
 			(A_GRADE - (inClass + hw + project + midterm)) / 0.35 - extra;
