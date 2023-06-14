@@ -12,7 +12,7 @@ export default function Home() {
 
 	const onFinish = (values: any) => {
 		console.log('Success:', values);
-		const {
+		let {
 			ic1,
 			ic2,
 			ic3,
@@ -33,6 +33,7 @@ export default function Home() {
 			pmc,
 			extra,
 		} = values;
+		extra += 2;
 
 		const inClass =
 			(ic1 + ic2 + ic3 + ic4 + ic5 + ic6 + ic7 + ic8 + ic9 + ic10) * 0.01;
